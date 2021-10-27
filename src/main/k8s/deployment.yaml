@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: journal-quarkusapp
+spec:
+  selector:
+    matchLabels:
+      app: journal-quarkusapp
+  template:
+    metadata:
+      labels:
+        app: journal-quarkusapp
+    spec:
+      containers:
+      - name: quarkusapp
+        image: haungi/journal-quarkusapp
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
